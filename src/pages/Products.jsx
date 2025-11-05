@@ -8,11 +8,13 @@ export default function Products() {
   const { cart, addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then(res => setProducts(res.data));
+    axios.get("https://fakestoreapi.com/products")
+      .then(res => setProducts(res.data))
+      .catch(() => console.error("Failed to fetch products"));
   }, []);
 
   return (
-    <div className="text-primary dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
+    <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map((product) => (
         <ProductCard
           key={product.id}

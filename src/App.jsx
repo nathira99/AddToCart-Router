@@ -4,17 +4,20 @@ import Cart from "./pages/Cart";
 import Navbar from "./components/Navbar";
 import { CartProvider } from "./context/CartContext";
 
-function App() {
+export default function App() {
   return (
     <CartProvider>
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+        <div className="min-h-screen flex flex-col bg-gray-50">
+          <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Products />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </main>
+        </div>
       </Router>
     </CartProvider>
   );
 }
-export default App;

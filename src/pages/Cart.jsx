@@ -8,43 +8,44 @@ export default function Cart() {
   const finalPrice = total * 0.9; // 10% discount
 
   return (
-    <div className="p-6 text-primary dark:text-white">
-      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold text-primary mb-6">🛒 Your Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="text-gray-600">Your cart is empty.</p>
       ) : (
-        <div>
+        <>
           {cart.map((item) => (
-            <div key={item.id} className="flex items-center justify-between border-b py-3">
+            <div key={item.id} className="flex justify-between items-center border-b py-4">
               <div className="flex items-center gap-4">
-                <img src={item.image} alt={item.title} className="h-16 w-16 object-cover" />
+                <img src={item.image} alt={item.title} className="h-16 w-16 object-contain" />
                 <div>
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p>${item.price}</p>
+                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                  <p className="text-gray-600">${item.price}</p>
                   <div className="flex items-center gap-2 mt-1">
-                    <button onClick={() => updateQuantity(item.id, "decrease")} className="px-2 bg-gray-300">-</button>
+                    <button onClick={() => updateQuantity(item.id, "decrease")} className="px-3 py-1 bg-gray-200 rounded">-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => updateQuantity(item.id, "increase")} className="px-2 bg-gray-300">+</button>
+                    <button onClick={() => updateQuantity(item.id, "increase")} className="px-3 py-1 bg-gray-200 rounded">+</button>
                   </div>
                 </div>
               </div>
-              <div>
-                <p>Total: ${(item.price * item.quantity).toFixed(2)}</p>
+              <div className="text-right">
+                <p className="font-medium text-accent">Total: ${(item.price * item.quantity).toFixed(2)}</p>
                 <button
                   onClick={() => removeFromCart(item.id)}
-                  className="text-red-500 text-sm mt-1"
+                  className="text-red-500 text-sm hover:underline"
                 >
                   Remove
                 </button>
               </div>
             </div>
           ))}
+
           <div className="mt-6 text-right">
-            <p className="font-semibold">Subtotal: ${total.toFixed(2)}</p>
-            <p className="text-green-600">10% Discount Applied</p>
-            <h2 className="text-xl font-bold">Final Total: ${finalPrice.toFixed(2)}</h2>
+            <p className="font-semibold text-gray-700">Subtotal: ${total.toFixed(2)}</p>
+            <p className="text-secondary font-medium">10% Discount Applied</p>
+            <h2 className="text-2xl font-bold text-primary mt-2">Final Total: ${finalPrice.toFixed(2)}</h2>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

@@ -7,6 +7,9 @@ export default function Navbar() {
 
   return (
     <nav className="bg-blue-600 text-white dark:text-primary p-4 flex justify-between items-center">
+      <div className="bg-primary text-white p-4 text-center">
+  ✅ Tailwind Colors Working — Blue Background, White Text
+</div>
       <Link to="/" className="font-bold text-xl">Shop</Link>
       <Link to="/cart" className="relative">
         Cart

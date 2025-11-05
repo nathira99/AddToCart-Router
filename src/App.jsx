@@ -8,6 +8,9 @@ export default function App() {
   return (
     <CartProvider>
       <Router>
+        <div className="bg-primary text-white text-center py-4">
+  ✅ Tailwind Test — If this text is blue with white letters, it's fixed!
+</div>
         <div className="min-h-screen flex flex-col bg-gray-50">
           <Navbar />
           <main className="flex-1">
